@@ -1,12 +1,13 @@
 import { GroupCard } from '@components/GroupCard';
 import { Header } from '@components/Header';
 import { Highlight } from '@components/Highlight';
+import { ListEmpty } from '@components/ListEmpty';
 import { useState } from 'react';
 import { FlatList } from 'react-native';
 import * as S from './styles'
 
 export function Group() {
-  const [groups, setGroups] = useState<string[]>(['Turma Ignite'])
+  const [groups, setGroups] = useState<string[]>([])
   return (
     <S.Container>
       <Header />
@@ -20,7 +21,9 @@ export function Group() {
         renderItem={({item}) => (
           <GroupCard title={item}/>
         )}
+        contentContainerStyle={groups.length === 0 && {flex: 1}}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => <ListEmpty message="Quetal cadastrar a primeira turma?" />}
       />
     </S.Container>
   );
