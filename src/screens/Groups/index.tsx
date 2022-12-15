@@ -1,10 +1,10 @@
-import { Button } from '@components/Button';
-import { GroupCard } from '@components/GroupCard';
-import { Header } from '@components/Header';
-import { Highlight } from '@components/Highlight';
-import { ListEmpty } from '@components/ListEmpty';
-import { useState } from 'react';
-import { FlatList } from 'react-native';
+import { Button } from '@components/Button'
+import { GroupCard } from '@components/GroupCard'
+import { Header } from '@components/Header'
+import { Highlight } from '@components/Highlight'
+import { ListEmpty } from '@components/ListEmpty'
+import { useState } from 'react'
+import { FlatList } from 'react-native'
 import * as S from './styles'
 
 export function Group() {
@@ -28,6 +28,6 @@ export function Group() {
       />
       <Button title="Criar nova turma"/>
     </S.Container>
-  );
+  )
 }
 
