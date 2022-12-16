@@ -19,7 +19,7 @@ export function AppRoutes(){
       />
 
       <Screen
-        name="plyers"
+        name="players"
         component={Players}
       />
     </Navigator>
