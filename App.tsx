@@ -1,11 +1,9 @@
 import {ThemeProvider} from 'styled-components'
-// import { Group } from "@screens/Groups"
 import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto'
 import theme from '@theme/index'
 import { Loading } from '@components/Loading'
 import { StatusBar } from 'react-native'
-// import { NewGroup } from '@screens/NewGroup'
-import { Players } from '@screens/Players'
+import { Routes } from '@routes/index'
 
 export default function App() {
 
@@ -18,7 +16,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Players/> : <Loading />}
+      {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   )
 }

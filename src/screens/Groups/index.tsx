@@ -1,22 +1,31 @@
+import { useNavigation } from '@react-navigation/native'
+import { useState } from 'react'
+import { FlatList } from 'react-native'
+
 import { Button } from '@components/Button'
 import { GroupCard } from '@components/GroupCard'
 import { Header } from '@components/Header'
 import { Highlight } from '@components/Highlight'
 import { ListEmpty } from '@components/ListEmpty'
-import { useState } from 'react'
-import { FlatList } from 'react-native'
+
 import * as S from './styles'
 
-export function Group() {
+export function Groups() {
   const [groups, setGroups] = useState<string[]>([])
+  const { navigate } = useNavigation()
+
+  function handleNewGroup(){
+    navigate('new')
+  }
+
   return (
     <S.Container>
       <Header />
-      <Highlight 
+      <Highlight
         title="Turmas"
         subtitle="Jogue com a sua turma"
       />
-      <FlatList 
+      <FlatList
         data={groups}
         keyExtractor={item => item}
         renderItem={({item}) => (
@@ -26,7 +35,10 @@ export function Group() {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => <ListEmpty message="Quetal cadastrar a primeira turma?" />}
       />
-      <Button title="Criar nova turma"/>
+      <Button
+        title="Criar nova turma"
+        onPress={handleNewGroup}
+      />
     </S.Container>
   )
 }
