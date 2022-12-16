@@ -1,4 +1,5 @@
 import { ButtonIcon } from '@components/ButtonIcon'
+import { Filter } from '@components/Filter'
 import { Header } from '@components/Header'
 import { Highlight } from '@components/Highlight'
 import { Input } from '@components/Input'
@@ -19,6 +20,7 @@ export function Players(){
         />
         <ButtonIcon icon="add" />
       </S.Form>
+      <Filter title="Turma A" />
     </S.Container>
   )
 }
