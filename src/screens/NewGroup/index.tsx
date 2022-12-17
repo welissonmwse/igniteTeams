@@ -7,14 +7,21 @@ import { Highlight } from '@components/Highlight'
 import { Input } from '@components/Input'
 
 import * as S from './styles'
+import { groupCreate } from '@storage/group/groupCreate'
 
 export function NewGroup(){
   const [group, setGoup] = useState('')
 
   const { navigate } = useNavigation()
 
-  function handleNewGroup(){
-    navigate('players', { group })
+  async function handleNewGroup(){
+    try {
+      await groupCreate(group)
+      navigate('players', { group })
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return(
