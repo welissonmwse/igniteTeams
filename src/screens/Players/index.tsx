@@ -17,6 +17,7 @@ import { ListEmpty } from '@components/ListEmpty'
 import { PlayerCard } from '@components/PlayerCard'
 
 import * as S from './styles'
+import { PlayerRemoveByGroup } from '@storage/player/playerRemoveByGroup'
 
 type RouteParams = {
   group: string
@@ -70,6 +71,28 @@ export function Players(){
     }
   }
 
+  async function handleRemovePlayer(playerName: string){
+    try {
+      Alert.alert('Jogador', 'Deseja remover este jogador ?', [
+        {
+          text: 'Sim',
+          onPress: async () => {
+            await PlayerRemoveByGroup(playerName, group)
+            fetchPlayersByTeam()
+          }
+        },
+        {
+          text: 'Não',
+          style: 'cancel'
+        }
+      ])
+
+    } catch (error) {
+      console.log(error)
+      Alert.alert('Jogador', 'Não foi possível remover o jogador')
+    }
+  }
+
   useEffect(() => {
     fetchPlayersByTeam()
   }, [team])
@@ -119,7 +142,7 @@ export function Players(){
         renderItem={({item}) => (
           <PlayerCard
             name={item.name}
-            onRemove={() => console.log('Removed')}
+            onRemove={() => handleRemovePlayer(item.name)}
           />
         )}
         ListEmptyComponent={() => (
